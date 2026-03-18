@@ -8,7 +8,7 @@ public class ToDoApp {
         ArrayList<String> tasks = new ArrayList<>();
 
         while (true) { // 終了するまでずっと繰り返す(無限ループ)
-            System.out.println("1:追加 2:表示 3:終了");
+            System.out.println("1:追加 2:表示 3:削除 4:終了");
             System.out.println("選択してください");
 
             int choice = scanner.nextInt();
@@ -29,6 +29,22 @@ public class ToDoApp {
                 }
 
             } else if (choice == 3) {
+                if (tasks.size() == 0) {
+                    System.out.println("削除するタスクがありません");
+                    continue; // ループの先頭に戻る
+                }
+                System.out.println("削除したい番号を入力してください");
+                int deleteIndex = scanner.nextInt();
+
+                if (deleteIndex >= 1 && deleteIndex <= tasks.size()) {
+                    tasks.remove(deleteIndex - 1);
+                    System.out.println("削除しました!");
+
+                } else {
+                    System.out.println("その番号は存在しません");
+                }
+
+            } else if (choice == 4) {
                 System.out.println("終了します");
                 break; // ループ抜ける
             } else {
