@@ -1,7 +1,26 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.*;
 
 public class MemoApp {
+
+    // 保存メソッド
+    public static void saveToFile(ArrayList<String> memos) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("memos.txt"));
+            for (String memo : memos) {
+                writer.write(memo);
+                writer.newLine();
+            }
+            writer.close();
+        }
+
+        catch (IOException e) {
+            System.out.println("ファイルの保存に失敗しました");
+
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> memos = new ArrayList<>();
